@@ -1,0 +1,13 @@
+name = "Pathnames"
+uuid = "09eb9df4-c16c-45e4-b3a9-061214bcee23"
+authors = ["Carlo Cabrera <30379873+carlocab@users.noreply.github.com> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1.2"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
