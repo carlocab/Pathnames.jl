@@ -1,6 +1,6 @@
 baremodule Pathnames
 
-export Pathname, pathname, @p_str
+export Pathname, PathnameWrapper, pathname, @p_str
 
 import Base
 using Base: AbstractString, getproperty, include,
@@ -33,6 +33,9 @@ joinpath(x::Vararg{Pathname}) = pathname(joinpath(getproperty.(x, :path)...))
 joinpath(x::Pathname, y::Vararg{AbstractString}) = joinpath(x, pathname.(y)...)
 joinpath(x::AbstractString, y::Pathname, z::Vararg{AbstractString}) = joinpath(pathname(x), y, pathname.(z)...)
 joinpath(x::Pathname, y::Pathname, z::Vararg{AbstractString}) = joinpath(x, y, pathname.(z)...)
+
+# We're not `using Base`, so we need to `include` this way
+include(@__MODULE__, "pathname_wrapper.jl")
 
 import Base.ncodeunits
 ncodeunits(p::Pathname) = ncodeunits(p.path)
